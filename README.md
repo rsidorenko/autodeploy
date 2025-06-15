@@ -1,7 +1,7 @@
-# Kitchenware E-commerce Platform
+# Посуда от и до
 
 ## Описание проекта
-Интернет-магазин посуды с полным функционалом электронной коммерции, включая каталог товаров, корзину, оформление заказов, личный кабинет и админ-панель.
+Интернет-магазин посуды с каталогом товаров, корзиной, оформлением заказов, личным кабинетом и админ-панель.
 
 ## Технологический стек
 
@@ -124,7 +124,7 @@ cd application
 2. Настроить переменные окружения:
 ```bash
 # Backend (.env)
-MONGODB_URI=mongodb://localhost:27017/kitchenware
+MONGODB_URI=mongodb://localhost:27017/your-database
 JWT_SECRET=your-secret-key
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
