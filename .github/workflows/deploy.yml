@@ -1,0 +1,26 @@
+name: Autodeploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: posudaotido.ru
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ~/application
+            git pull origin main
+            docker-compose down
+            docker-compose build backend frontend mongo nginx
+            docker-compose up -d 
