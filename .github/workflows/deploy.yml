@@ -19,8 +19,4 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd ~/application
-            git pull origin main
-            docker-compose down
-            docker-compose build backend frontend mongo nginx
-            docker-compose up -d 
+            bash ~/application/deploy.sh
