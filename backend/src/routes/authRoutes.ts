@@ -233,21 +233,21 @@ router.get('/google/callback',
   async (req, res) => {
     try {
       const user = req.user;
-      if (!process.env.JWT_SECRET) {
-        throw new Error('JWT_SECRET is not configured');
+      if (!user) {
+        throw new Error('User not found after Google auth');
       }
-      
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { 
-        expiresIn: '24h' 
-      });
-
-      res.cookie('token', token, {
+      const { generateTokens } = require('../services/tokenService');
+      const { REFRESH_COOKIE_OPTIONS } = require('../controllers/authController');
+      const tokens = generateTokens({ id: user._id, email: user.email, role: user.role });
+      res.cookie('refreshToken', tokens.refreshToken, REFRESH_COOKIE_OPTIONS);
+      res.cookie('token', tokens.accessToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-        maxAge: 24 * 60 * 60 * 1000
+        maxAge: 60 * 60 * 1000, // 1 час
+        domain: '.posudaotido.ru',
+        path: '/'
       });
-
       res.redirect(`${process.env.FRONTEND_URL}/auth/google-success`);
     } catch (error) {
       console.error('Google OAuth error:', error);
