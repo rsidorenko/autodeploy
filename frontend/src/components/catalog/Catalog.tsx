@@ -157,16 +157,16 @@ const Catalog: React.FC = () => {
               }}
               placeholder="Выберите или введите категорию..."
               isClearable={false}
-              noOptionsMessage={() => 'отсутствует категория'}
+              noOptionsMessage={() => 'Отсутствует'}
               isSearchable
               styles={{
                 control: (base) => ({
                   ...base,
                   borderColor: '#e0c9a6',
                   boxShadow: 'none',
-                  minHeight: '38px',
+                  minHeight: '50px',
                   fontSize: '16px',
-                  background: '#43454',
+                  background: '#fff',
                 }),
                 option: (base, state) => ({
                   ...base,
