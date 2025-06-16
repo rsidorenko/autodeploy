@@ -20,8 +20,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             set -e
-            cd ~/application
+            cd ~/
+            rm -rf application
             git clone https://github.com/rsidorenko/autodeploy.git application
+            cd ~/application
             echo "Останавливаем старые контейнеры..."
             docker kill backend frontend mongo nginx
             docker system prune -f
