@@ -331,12 +331,40 @@ const AdminPanel: React.FC = () => {
     setSearchTerm(value);
     if (value.trim() === '') {
       setSearchResults(null);
+      setSelectedProduct(null);
+      setEditForm({
+        _id: '',
+        name: '',
+        description: '',
+        price: '',
+        category: '',
+        stock: '',
+        customCategory: '',
+        imageFit: 'cover',
+      });
+      setEditImage(null);
+      setEditImagePreview(null);
+      setEditCroppedImage(null);
       return;
     }
     setSearchLoading(true);
     try {
       const res = await api.get(`/products/search?query=${encodeURIComponent(value)}`);
       setSearchResults(res.data);
+      setSelectedProduct(null);
+      setEditForm({
+        _id: '',
+        name: '',
+        description: '',
+        price: '',
+        category: '',
+        stock: '',
+        customCategory: '',
+        imageFit: 'cover',
+      });
+      setEditImage(null);
+      setEditImagePreview(null);
+      setEditCroppedImage(null);
     } catch {
       setSearchResults([]);
     }
