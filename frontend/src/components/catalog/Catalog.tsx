@@ -145,7 +145,7 @@ const Catalog: React.FC = () => {
             />
           </div>
 
-          <div className={styles.categories} style={{ border: 'none', boxShadow: 'none', padding: 0, background: 'none' }}>
+          <div>
             <Select
               className={styles.categorySelect}
               classNamePrefix="customSelect"
