@@ -75,11 +75,26 @@ export const updateProduct = async (req: Request, res: Response) => {
     const { name, description, price, category, stock, imageFit } = req.body;
     const file = req.file;
 
+    // Получаем текущий товар для удаления старых изображений
+    const currentProduct = await Product.findById(req.params.id);
+    if (!currentProduct) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
     const updateData: any = { name, description, price, category, stock };
     if (file) {
       const imageUrl = '/uploads/' + file.filename;
       updateData.images = [imageUrl];
       updateData.thumbnails = [imageUrl];
+
+      // Удаляем старые изображения
+      const oldImages = [...(currentProduct.images || []), ...(currentProduct.thumbnails || [])];
+      for (const image of oldImages) {
+        const imagePath = path.join(__dirname, '../../', image);
+        if (fs.existsSync(imagePath)) {
+          fs.unlinkSync(imagePath);
+        }
+      }
     }
     if (imageFit !== undefined) {
       updateData.imageFit = imageFit;
@@ -90,10 +105,6 @@ export const updateProduct = async (req: Request, res: Response) => {
       updateData,
       { new: true }
     );
-
-    if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
-    }
 
     res.json(product);
   } catch (error) {
