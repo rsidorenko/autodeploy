@@ -6,16 +6,21 @@ import path from 'path';
 export const getAllProducts = async (req: Request, res: Response) => {
   try {
     const page = parseInt(req.query.page as string) || 1;
-    const limit = parseInt(req.query.limit as string) || 10;
-    const skip = (page - 1) * limit;
+    const limit = req.query.limit ? parseInt(req.query.limit as string) : 0; // 0 — без лимита
+    const skip = (page - 1) * (limit || 1);
 
-    const products = await Product.find()
-      .skip(skip)
-      .limit(limit)
-      .sort({ createdAt: -1 });
+    let products;
+    if (limit) {
+      products = await Product.find()
+        .skip(skip)
+        .limit(limit)
+        .sort({ createdAt: -1 });
+    } else {
+      products = await Product.find().sort({ createdAt: -1 });
+    }
 
     const total = await Product.countDocuments();
-    const totalPages = Math.ceil(total / limit);
+    const totalPages = limit ? Math.ceil(total / limit) : 1;
 
     res.json({
       products,
