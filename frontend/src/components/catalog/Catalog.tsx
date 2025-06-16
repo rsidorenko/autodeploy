@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import ImageFallback from '../common/ImageFallback';
 import api from '../../store/api';
 import ordersStyles from '../../styles/Orders.module.scss';
-import Select, { components } from 'react-select';
+import Select from 'react-select';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -159,10 +159,6 @@ const Catalog: React.FC = () => {
               isClearable={false}
               noOptionsMessage={() => 'отсутствует категория'}
               isSearchable
-              components={{
-                DropdownIndicator: () => null,
-                IndicatorSeparator: () => null
-              }}
               styles={{
                 control: (base) => ({
                   ...base,
