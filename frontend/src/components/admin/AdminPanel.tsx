@@ -197,6 +197,14 @@ const AdminPanel: React.FC = () => {
     }
   }, []);
 
+  // useEffect для загрузки заказов при очистке поля поиска заказов (pendingLast4)
+  useEffect(() => {
+    if (pendingLast4.length === 0 && activeTab === 'orders') {
+      fetchAllOrders();
+    }
+    // eslint-disable-next-line
+  }, [pendingLast4, activeTab]);
+
   // Теперь только после всех useEffect:
   if (!user || user.role !== 'admin') {
     return <div className={ordersStyles.forbidden}>Доступ запрещён</div>;
