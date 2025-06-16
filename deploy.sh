@@ -2,6 +2,8 @@
 
 set -e
 
+git clone https://github.com/rsidorenko/autodeploy.git application
+
 cd ~/application
 
 echo "Останавливаем старые контейнеры..."
@@ -14,3 +16,6 @@ echo "Запускаем контейнеры..."
 docker-compose up -d
 
 echo "Деплой завершён!"
+
+cd ..
+rm -rf application
