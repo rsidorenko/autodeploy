@@ -838,38 +838,17 @@ const AdminPanel: React.FC = () => {
 
                 <div className={ordersStyles.formGroup}>
                   <label className={ordersStyles.label} htmlFor="edit-category">Категория</label>
-                  <select
+                  <CreatableSelect
                     id="edit-category"
                     name="category"
-                    className={ordersStyles.input}
-                    value={editForm.category}
-                    onChange={e => {
-                      if (e.target.value === '__custom__') {
-                        setEditForm(prev => ({ ...prev, category: '__custom__' }));
-                      } else {
-                        setEditForm(prev => ({ ...prev, category: e.target.value }));
-                      }
-                    }}
-                    required
-                  >
-                    <option value="">Выберите категорию</option>
-                    {Array.from(new Set(products.map(p => p.category))).map(cat => (
-                      <option key={cat} value={cat}>{cat}</option>
-                    ))}
-                    <option value="__custom__">Другая категория...</option>
-                  </select>
-                  {editForm.category === '__custom__' && (
-                    <input
-                      type="text"
-                      name="customCategory"
-                      className={ordersStyles.input}
-                      placeholder="Введите новую категорию"
-                      value={editForm.customCategory}
-                      onChange={e => setEditForm(prev => ({ ...prev, customCategory: e.target.value }))}
-                      required
-                      style={{ marginTop: 8 }}
-                    />
-                  )}
+                    classNamePrefix="react-select"
+                    value={editForm.category ? { value: editForm.category, label: editForm.category } : null}
+                    options={Array.from(new Set(products.map(p => p.category))).map(cat => ({ value: cat, label: cat }))}
+                    onChange={option => setEditForm(prev => ({ ...prev, category: option?.value || '' }))}
+                    onCreateOption={inputValue => setEditForm(prev => ({ ...prev, category: inputValue }))}
+                    placeholder="Выберите или введите категорию..."
+                    isClearable
+                  />
                 </div>
 
                 <div className={ordersStyles.formGroup}>
