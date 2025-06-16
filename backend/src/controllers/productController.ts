@@ -180,7 +180,7 @@ export const getProductsByCategory = async (req: Request, res: Response) => {
   }
 };
 
-export const getAllCategories = async (req, res) => {
+export const getAllCategories = async (req: Request, res: Response) => {
   try {
     let filter = {};
     if (req.query.search) {
