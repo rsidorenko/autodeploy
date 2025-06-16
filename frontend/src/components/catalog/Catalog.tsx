@@ -30,6 +30,7 @@ const Catalog: React.FC = () => {
   const navigate = useNavigate();
   const [globalPriceRange, setGlobalPriceRange] = useState<[number, number]>([0, 10000]);
   const [categoryInput, setCategoryInput] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
 
   // Получение категорий
   useEffect(() => {
@@ -144,23 +145,52 @@ const Catalog: React.FC = () => {
             />
           </div>
 
-          <div className={styles.categories}>
-            <Select
+          <div className={styles.categories} style={{ position: 'relative' }}>
+            <input
               className={styles.categorySelect}
-              classNamePrefix="react-select"
-              options={[{ value: 'все', label: 'Все' }, ...filteredCategories.map(cat => ({ value: cat, label: cat.charAt(0).toUpperCase() + cat.slice(1) }))]}
-              value={{ value: category, label: category === 'все' ? 'Все' : category.charAt(0).toUpperCase() + category.slice(1) }}
-              onChange={option => {
-                setCategory(option?.value || 'все');
-                setCurrentPage(1);
+              value={categoryInput || (category === 'все' ? 'Все' : category.charAt(0).toUpperCase() + category.slice(1))}
+              onChange={e => {
+                setCategoryInput(e.target.value);
+                setShowDropdown(true);
               }}
-              onInputChange={inputValue => setCategoryInput(inputValue)}
-              inputValue={categoryInput}
+              onFocus={() => setShowDropdown(true)}
+              onBlur={() => setTimeout(() => setShowDropdown(false), 150)}
               placeholder="Выберите или введите категорию..."
-              isClearable={false}
-              noOptionsMessage={() => 'отсутствует категория'}
-              isSearchable
+              style={{ width: '100%' }}
             />
+            {showDropdown && (
+              <ul className={styles.categoryDropdown}>
+                <li
+                  className={category === 'все' ? styles.selected : ''}
+                  onClick={() => {
+                    setCategory('все');
+                    setCategoryInput('Все');
+                    setShowDropdown(false);
+                    setCurrentPage(1);
+                  }}
+                >
+                  Все
+                </li>
+                {filteredCategories.length === 0 ? (
+                  <li className={styles.noCategory}>отсутствует категория</li>
+                ) : (
+                  filteredCategories.map(cat => (
+                    <li
+                      key={cat}
+                      className={category === cat ? styles.selected : ''}
+                      onClick={() => {
+                        setCategory(cat);
+                        setCategoryInput(cat.charAt(0).toUpperCase() + cat.slice(1));
+                        setShowDropdown(false);
+                        setCurrentPage(1);
+                      }}
+                    >
+                      {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                    </li>
+                  ))
+                )}
+              </ul>
+            )}
           </div>
         </div>
 
