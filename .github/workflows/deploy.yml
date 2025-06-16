@@ -25,7 +25,7 @@ jobs:
             git clone https://github.com/rsidorenko/autodeploy.git application
             cd ~/application
             echo "Останавливаем старые контейнеры..."
-            docker kill backend frontend mongo nginx
+            docker kill backend frontend mongo nginx || true
             docker system prune -f
             echo "Собираем контейнеры..."
             docker-compose build backend frontend mongo nginx
