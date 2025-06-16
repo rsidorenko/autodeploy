@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import ImageFallback from '../common/ImageFallback';
 import api from '../../store/api';
 import ordersStyles from '../../styles/Orders.module.scss';
-import Select from 'react-select';
+import Select, { components } from 'react-select';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -145,7 +145,7 @@ const Catalog: React.FC = () => {
             />
           </div>
 
-          <div className={styles.categories}>
+          <div className={styles.categories} style={{ border: 'none', boxShadow: 'none', padding: 0, background: 'none' }}>
             <Select
               className={styles.categorySelect}
               classNamePrefix="customSelect"
@@ -159,6 +159,10 @@ const Catalog: React.FC = () => {
               isClearable={false}
               noOptionsMessage={() => 'отсутствует категория'}
               isSearchable
+              components={{
+                DropdownIndicator: () => null,
+                IndicatorSeparator: () => null
+              }}
               styles={{
                 control: (base) => ({
                   ...base,
