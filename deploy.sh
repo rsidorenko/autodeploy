@@ -3,7 +3,6 @@
 set -e
 
 cd ~/application
-git pull origin main
 
 echo "Останавливаем старые контейнеры..."
 docker-compose down
