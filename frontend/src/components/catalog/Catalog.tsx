@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import ImageFallback from '../common/ImageFallback';
 import api from '../../store/api';
 import ordersStyles from '../../styles/Orders.module.scss';
+import Select from 'react-select';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -28,6 +29,7 @@ const Catalog: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
   const [globalPriceRange, setGlobalPriceRange] = useState<[number, number]>([0, 10000]);
+  const [categoryInput, setCategoryInput] = useState('');
 
   // Получение категорий
   useEffect(() => {
@@ -120,11 +122,9 @@ const Catalog: React.FC = () => {
     currentPage * ITEMS_PER_PAGE
   );
 
-  // При выборе категории 'все' сбрасываем фильтр
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCategory(e.target.value);
-    setCurrentPage(1);
-  };
+  const filteredCategories = categoryInput.trim() === ''
+    ? categories
+    : categories.filter(cat => cat.toLowerCase().includes(categoryInput.toLowerCase()));
 
   return (
     <div>
@@ -145,18 +145,22 @@ const Catalog: React.FC = () => {
           </div>
 
           <div className={styles.categories}>
-            <select
-              value={category}
-                onChange={handleCategoryChange}
+            <Select
               className={styles.categorySelect}
-            >
-              {/* Опция "Все" добавляется вручную */}
-              <option key="все" value="все">Все</option>
-              {/* Категории из БД */}
-              {categories.map(cat => (
-                  <option key={cat} value={cat}>{cat.charAt(0).toUpperCase() + cat.slice(1)}</option>
-              ))}
-            </select>
+              classNamePrefix="react-select"
+              options={[{ value: 'все', label: 'Все' }, ...filteredCategories.map(cat => ({ value: cat, label: cat.charAt(0).toUpperCase() + cat.slice(1) }))]}
+              value={{ value: category, label: category === 'все' ? 'Все' : category.charAt(0).toUpperCase() + category.slice(1) }}
+              onChange={option => {
+                setCategory(option?.value || 'все');
+                setCurrentPage(1);
+              }}
+              onInputChange={inputValue => setCategoryInput(inputValue)}
+              inputValue={categoryInput}
+              placeholder="Выберите или введите категорию..."
+              isClearable={false}
+              noOptionsMessage={() => 'отсутствует категория'}
+              isSearchable
+            />
           </div>
         </div>
 
