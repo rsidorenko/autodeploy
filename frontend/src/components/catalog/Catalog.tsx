@@ -145,52 +145,49 @@ const Catalog: React.FC = () => {
             />
           </div>
 
-          <div className={styles.categories} style={{ position: 'relative' }}>
-            <input
+          <div className={styles.categories}>
+            <Select
               className={styles.categorySelect}
-              value={categoryInput || (category === 'все' ? 'Все' : category.charAt(0).toUpperCase() + category.slice(1))}
-              onChange={e => {
-                setCategoryInput(e.target.value);
-                setShowDropdown(true);
+              classNamePrefix="customSelect"
+              options={[{ value: 'все', label: 'Все' }, ...categories.map(cat => ({ value: cat, label: cat.charAt(0).toUpperCase() + cat.slice(1) }))]}
+              value={{ value: category, label: category === 'все' ? 'Все' : category.charAt(0).toUpperCase() + category.slice(1) }}
+              onChange={option => {
+                setCategory(option?.value || 'все');
+                setCurrentPage(1);
               }}
-              onFocus={() => setShowDropdown(true)}
-              onBlur={() => setTimeout(() => setShowDropdown(false), 150)}
               placeholder="Выберите или введите категорию..."
-              style={{ width: '100%' }}
+              isClearable={false}
+              noOptionsMessage={() => 'отсутствует категория'}
+              isSearchable
+              styles={{
+                control: (base) => ({
+                  ...base,
+                  borderColor: '#e0c9a6',
+                  boxShadow: 'none',
+                  minHeight: '38px',
+                  fontSize: '16px',
+                  background: '#fff',
+                }),
+                option: (base, state) => ({
+                  ...base,
+                  background: state.isSelected ? '#f5e7d6' : state.isFocused ? '#f5e7d6' : '#fff',
+                  color: '#a67c52',
+                  cursor: 'pointer',
+                }),
+                menu: (base) => ({
+                  ...base,
+                  zIndex: 10,
+                }),
+                singleValue: (base) => ({
+                  ...base,
+                  color: '#a67c52',
+                }),
+                placeholder: (base) => ({
+                  ...base,
+                  color: '#a67c52',
+                }),
+              }}
             />
-            {showDropdown && (
-              <ul className={styles.categoryDropdown}>
-                <li
-                  className={category === 'все' ? styles.selected : ''}
-                  onClick={() => {
-                    setCategory('все');
-                    setCategoryInput('Все');
-                    setShowDropdown(false);
-                    setCurrentPage(1);
-                  }}
-                >
-                  Все
-                </li>
-                {filteredCategories.length === 0 ? (
-                  <li className={styles.noCategory}>отсутствует категория</li>
-                ) : (
-                  filteredCategories.map(cat => (
-                    <li
-                      key={cat}
-                      className={category === cat ? styles.selected : ''}
-                      onClick={() => {
-                        setCategory(cat);
-                        setCategoryInput(cat.charAt(0).toUpperCase() + cat.slice(1));
-                        setShowDropdown(false);
-                        setCurrentPage(1);
-                      }}
-                    >
-                      {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                    </li>
-                  ))
-                )}
-              </ul>
-            )}
           </div>
         </div>
 
