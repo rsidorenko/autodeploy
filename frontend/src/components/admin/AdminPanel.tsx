@@ -601,6 +601,7 @@ const AdminPanel: React.FC = () => {
               placeholder="Выберите или введите категорию..."
               isClearable
               classNamePrefix="react-select"
+              formatCreateLabel={inputValue => `Создать "${inputValue}"`}
             />
             {form.category === '__custom__' && (
               <input
@@ -845,6 +846,7 @@ const AdminPanel: React.FC = () => {
                     placeholder="Выберите или введите категорию..."
                     isClearable
                     classNamePrefix="react-select"
+                    formatCreateLabel={inputValue => `Создать "${inputValue}"`}
                   />
                 </div>
 
