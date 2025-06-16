@@ -9,6 +9,7 @@ import ordersStyles from '../../styles/Orders.module.scss';
 import CreatableSelect from 'react-select/creatable';
 import ReactCrop, { Crop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
+import AsyncCreatableSelect from 'react-select/async-creatable';
 
 const TABS = [
   { key: 'create', label: 'Создать товар' },
@@ -555,6 +556,11 @@ const AdminPanel: React.FC = () => {
     setShowDeleteModal(false);
   };
 
+  const loadCategoryOptions = async (inputValue: string) => {
+    const res = await api.get(`/products/categories?search=${encodeURIComponent(inputValue)}`);
+    return res.data.map((cat: string) => ({ value: cat, label: cat }));
+  };
+
   return (
     <div className={ordersStyles.adminPanel}>
       <h2 className={ordersStyles.title}>Админ-панель</h2>
@@ -585,26 +591,17 @@ const AdminPanel: React.FC = () => {
             <input id="price" name="price" type="number" placeholder="Цена" value={form.price} onChange={handleChange} required className={ordersStyles.input} min={1} />
 
             <label className={ordersStyles.label} htmlFor="category">Категория</label>
-            <select
-              id="category"
-              name="category"
-              className={ordersStyles.input}
-              value={form.category.startsWith('__custom__') ? '' : form.category}
-              onChange={e => {
-                if (e.target.value === '__custom__') {
-                  setForm(f => ({ ...f, category: '__custom__' }));
-                } else {
-                  setForm(f => ({ ...f, category: e.target.value }));
-                }
-              }}
-              required={!form.category || form.category === '__custom__' ? false : true}
-            >
-              <option value="">Выберите категорию</option>
-              {Array.from(new Set(products.map((p: Product) => p.category).filter(Boolean))).map(cat => (
-                <option key={cat} value={cat}>{cat}</option>
-              ))}
-              <option value="__custom__">Другая категория...</option>
-            </select>
+            <AsyncCreatableSelect
+              cacheOptions
+              defaultOptions
+              loadOptions={loadCategoryOptions}
+              value={form.category ? { value: form.category, label: form.category } : null}
+              onChange={option => setForm(prev => ({ ...prev, category: option?.value || '' }))}
+              onCreateOption={inputValue => setForm(prev => ({ ...prev, category: inputValue }))}
+              placeholder="Выберите или введите категорию..."
+              isClearable
+              classNamePrefix="react-select"
+            />
             {form.category === '__custom__' && (
               <input
                 type="text"
@@ -838,16 +835,16 @@ const AdminPanel: React.FC = () => {
 
                 <div className={ordersStyles.formGroup}>
                   <label className={ordersStyles.label} htmlFor="edit-category">Категория</label>
-                  <CreatableSelect
-                    id="edit-category"
-                    name="category"
-                    classNamePrefix="react-select"
+                  <AsyncCreatableSelect
+                    cacheOptions
+                    defaultOptions
+                    loadOptions={loadCategoryOptions}
                     value={editForm.category ? { value: editForm.category, label: editForm.category } : null}
-                    options={Array.from(new Set(products.map(p => p.category))).map(cat => ({ value: cat, label: cat }))}
                     onChange={option => setEditForm(prev => ({ ...prev, category: option?.value || '' }))}
                     onCreateOption={inputValue => setEditForm(prev => ({ ...prev, category: inputValue }))}
                     placeholder="Выберите или введите категорию..."
                     isClearable
+                    classNamePrefix="react-select"
                   />
                 </div>
 

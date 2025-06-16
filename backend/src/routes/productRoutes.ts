@@ -14,7 +14,8 @@ import {
   updateProduct, 
   deleteProduct,
   searchProducts,
-  getProductsByCategory
+  getProductsByCategory,
+  getAllCategories
 } from '../controllers/productController';
 
 const router = express.Router();
@@ -185,16 +186,7 @@ router.get('/category/:categoryId', getProductsByCategory);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.get('/categories', async (req, res) => {
-  try {
-    const categories = await Product.distinct('category');
-    const categoryNames = categories.filter(cat => cat && cat.trim() !== '').sort();
-    res.json(categoryNames);
-  } catch (error: any) {
-    console.error('Error fetching categories:', error);
-    res.status(500).json({ message: 'Ошибка при получении категорий из БД' });
-  }
-});
+router.get('/categories', getAllCategories);
 
 /**
  * @swagger

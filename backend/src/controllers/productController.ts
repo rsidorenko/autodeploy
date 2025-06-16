@@ -178,4 +178,17 @@ export const getProductsByCategory = async (req: Request, res: Response) => {
     console.error('Ошибка получения товаров по категории:', error);
     res.status(500).json({ message: 'Ошибка получения товаров по категории' });
   }
+};
+
+export const getAllCategories = async (req, res) => {
+  try {
+    let filter = {};
+    if (req.query.search) {
+      filter = { category: { $regex: req.query.search, $options: 'i' } };
+    }
+    const categories = await Product.distinct('category', filter);
+    res.json(categories);
+  } catch (error) {
+    res.status(500).json({ message: 'Ошибка получения категорий' });
+  }
 }; 
