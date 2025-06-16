@@ -166,7 +166,7 @@ const Catalog: React.FC = () => {
                   boxShadow: 'none',
                   minHeight: '38px',
                   fontSize: '16px',
-                  background: '#fff',
+                  background: '#43454',
                 }),
                 option: (base, state) => ({
                   ...base,
