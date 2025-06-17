@@ -305,39 +305,54 @@
 }
 
 :global(.customSelect__control) {
-  padding: 0;
-  border: 4px solid #a65c00;
-  border-radius: 8px;
-  min-height: 44px;
-  height: 44px;
-  font-size: 1.05rem;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(100, 100, 255, 0.04);
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  border: 2px solid #a65c00 !important;
+  border-radius: 8px !important;
+  min-height: 44px !important;
+  height: 44px !important;
+  background: #fff !important;
+  box-shadow: 0 1px 4px rgba(100, 100, 255, 0.04) !important;
+  outline: none !important;
+  padding: 0 !important;
+  font-size: 1.05rem !important;
+  color: #a67c52 !important;
+  font-family: inherit !important;
+  box-sizing: border-box !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+  display: flex !important;
+  align-items: center !important;
 }
 :global(.customSelect__control--is-focused) {
   border-color: #a65c00 !important;
-  box-shadow: 0 2px 8px rgba(166, 92, 0, 0.15);
-  outline: none;
+  box-shadow: 0 2px 8px rgba(166, 92, 0, 0.15) !important;
+  outline: none !important;
 }
 :global(.customSelect__value-container) {
-  padding: 10px 16px;
-  height: 44px;
-  display: flex;
-  align-items: center;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
 }
-:global(.customSelect__single-value) {
-  color: #a67c52;
-  font-size: 1.05rem;
-  line-height: 1.2;
+:global(.customSelect__single-value),
+:global(.customSelect__placeholder) {
+  color: #a67c52 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: inherit !important;
 }
 :global(.customSelect__indicator-separator) {
-  background-color: #e0c9a6;
-  width: 1px;
+  background-color: #e0c9a6 !important;
+  width: 1px !important;
+  margin: 0 8px !important;
+  height: 60% !important;
 }
 :global(.customSelect__dropdown-indicator) {
-  color: #a65c00;
+  color: #a65c00 !important;
+  padding: 0 8px !important;
+  align-items: center !important;
+  display: flex !important;
 }
 
 @media (max-width: $breakpoint-tablet) {
