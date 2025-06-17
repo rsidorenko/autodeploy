@@ -305,21 +305,39 @@
 }
 
 :global(.customSelect__control) {
-  padding: 10px 16px;
+  padding: 0;
   border: 2px solid rgba(166, 78, 0, 0.4);
   border-radius: 8px;
+  min-height: 42px;
+  height: 42px;
   font-size: 1.05rem;
   background: #fff;
   box-shadow: 0 1px 4px rgba(100, 100, 255, 0.04);
   outline: none;
-  min-height: 42px;
-  height: 42px;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 :global(.customSelect__control--is-focused) {
   border-color: #a64e00 !important;
   box-shadow: 0 2px 8px rgba(166, 78, 0, 0.15);
   outline: none;
+}
+:global(.customSelect__value-container) {
+  padding: 10px 16px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+}
+:global(.customSelect__single-value) {
+  color: #a67c52;
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+:global(.customSelect__indicator-separator) {
+  background-color: #e0c9a6;
+  width: 1px;
+}
+:global(.customSelect__dropdown-indicator) {
+  color: #a65c00;
 }
 
 @media (max-width: $breakpoint-tablet) {
