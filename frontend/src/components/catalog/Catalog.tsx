@@ -169,9 +169,13 @@ const Catalog: React.FC = () => {
                 background: '#fff',
                 color: '#a67c52',
                 boxShadow: 'none',
-                transition: 'border-color 0.2s, box-shadow 0.2s',
                 outline: 'none',
+                transition: 'border-color 0.2s, box-shadow 0.2s',
                 ...(state.isFocused ? { boxShadow: '0 2px 8px rgba(166,92,0,0.15)' } : {}),
+                '&:hover': {
+                  border: state.isFocused ? '2px solid #a65c00' : '2px solid #e0c9a6',
+                  boxShadow: 'none',
+                },
               }),
               option: (base, state) => ({
                 ...base,
@@ -191,7 +195,7 @@ const Catalog: React.FC = () => {
                 ...base,
                 zIndex: 10,
               }),
-              dropdownIndicator: (base) => ({
+              dropdownIndicator: (base, state) => ({
                 ...base,
                 color: '#a65c00',
               }),
