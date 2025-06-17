@@ -306,10 +306,10 @@
 
 :global(.customSelect__control) {
   padding: 0;
-  border: 2px solid rgba(166, 78, 0, 0.4);
+  border: 2px solid #a65c00;
   border-radius: 8px;
-  min-height: 42px;
-  height: 42px;
+  min-height: 44px;
+  height: 44px;
   font-size: 1.05rem;
   background: #fff;
   box-shadow: 0 1px 4px rgba(100, 100, 255, 0.04);
@@ -317,13 +317,13 @@
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 :global(.customSelect__control--is-focused) {
-  border-color: #a64e00 !important;
-  box-shadow: 0 2px 8px rgba(166, 78, 0, 0.15);
+  border-color: #a65c00 !important;
+  box-shadow: 0 2px 8px rgba(166, 92, 0, 0.15);
   outline: none;
 }
 :global(.customSelect__value-container) {
   padding: 10px 16px;
-  height: 42px;
+  height: 44px;
   display: flex;
   align-items: center;
 }
