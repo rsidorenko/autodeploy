@@ -305,21 +305,21 @@
 }
 
 :global(.customSelect__control) {
+  padding: 10px 16px;
   border: 2px solid rgba(166, 78, 0, 0.4);
   border-radius: 8px;
-  min-height: 42px;
   font-size: 1.05rem;
   background: #fff;
-  color: #015D65;
   box-shadow: 0 1px 4px rgba(100, 100, 255, 0.04);
   outline: none;
-  padding: 10px 16px;
+  min-height: 42px;
+  height: 42px;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
-:global(.customSelect__control:focus),
 :global(.customSelect__control--is-focused) {
-  border-color: #a64e00;
+  border-color: #a64e00 !important;
   box-shadow: 0 2px 8px rgba(166, 78, 0, 0.15);
+  outline: none;
 }
 
 @media (max-width: $breakpoint-tablet) {
