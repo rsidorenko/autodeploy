@@ -301,33 +301,23 @@
 }
 
 .categorySelect {
-  padding: 8px 12px;
+  margin-right: $spacing-unit;
+}
+
+.customSelect__control {
   border: 2px solid rgba($primary-brown, 0.2);
   border-radius: $border-radius;
+  min-height: 46px;
   font-size: 1rem;
-  min-width: 180px;
-  font-family: $font-primary;
-  transition: border-color 0.3s;
   background: $white;
   color: $primary-blue;
-  margin-right: $spacing-unit;
-  appearance: none;
-  box-sizing: border-box;
-  height: 46px;
-  &.customSelect__control {
-    border: 2px solid rgba($primary-brown, 0.2);
-    border-radius: $border-radius;
-    min-height: 46px;
-    font-size: 1rem;
-    background: $white;
-    color: $primary-blue;
-    box-shadow: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-    &:focus, &--is-focused {
-      border-color: $primary-brown;
-      box-shadow: 0 2px 8px rgba($primary-brown, 0.15);
-    }
+  box-shadow: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  padding: 0 16px;
+  &:focus, &--is-focused {
+    border-color: $primary-brown;
+    box-shadow: 0 2px 8px rgba($primary-brown, 0.15);
   }
 }
 
@@ -682,34 +672,17 @@
     }
   }
 
-  .categorySelect,
-  .categorySelect.customSelect__control {
-    padding: 8px 12px;
-    border: 1px solid rgba($primary-color, 0.4);
-    border-radius: $border-radius;
-    font-size: 0.95rem;
-    min-width: 0;
-    height: 40px;
-    min-height: 40px;
-    box-sizing: border-box;
+  .categorySelect {
     margin-right: 0;
-    background: $white;
-    color: $primary-blue;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    &.customSelect__control {
-      border: 1px solid rgba($primary-color, 0.4);
-      border-radius: $border-radius;
-      min-height: 40px;
-      font-size: 0.95rem;
-      background: $white;
-      color: $primary-blue;
-      box-shadow: none;
-      outline: none;
-      &:focus, &--is-focused {
-        border-color: $primary-color;
-        box-shadow: 0 2px 8px rgba($primary-color, 0.15);
-      }
+  }
+  .customSelect__control {
+    border: 1px solid rgba($primary-color, 0.4);
+    min-height: 40px;
+    font-size: 0.95rem;
+    padding: 0 12px;
+    &:focus, &--is-focused {
+      border-color: $primary-color;
+      box-shadow: 0 2px 8px rgba($primary-color, 0.15);
     }
   }
 
