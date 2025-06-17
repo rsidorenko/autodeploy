@@ -159,6 +159,34 @@ const Catalog: React.FC = () => {
               isClearable={false}
               noOptionsMessage={() => 'Отсутствует'}
               isSearchable
+              styles={{
+                control: (base) => ({
+                  ...base,
+                  borderColor: '#e0c9a6',
+                  boxShadow: 'none',
+                  minHeight: '46px',
+                  fontSize: '16px',
+                  background: '#fff',
+                }),
+                option: (base, state) => ({
+                  ...base,
+                  background: state.isSelected ? '#f5e7d6' : state.isFocused ? '#f5e7d6' : '#fff',
+                  color: '#a67c52',
+                  cursor: 'pointer',
+                }),
+                menu: (base) => ({
+                  ...base,
+                  zIndex: 10,
+                }),
+                singleValue: (base) => ({
+                  ...base,
+                  color: '#a67c52',
+                }),
+                placeholder: (base) => ({
+                  ...base,
+                  color: '#a67c52',
+                }),
+              }}
             />
           </div>
         </div>

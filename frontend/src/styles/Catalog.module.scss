@@ -323,41 +323,6 @@
 //   }
 // }
 
-.customSelect__control {
-  border-color: #e0c9a6 !important;
-  box-shadow: none !important;
-  min-height: 46px !important;
-  font-size: 16px !important;
-  background: #fff !important;
-  border-radius: 8px !important;
-}
-
-.customSelect__option {
-  background: #fff;
-  color: #a67c52;
-  cursor: pointer;
-  font-size: 16px;
-}
-.customSelect__option--is-focused,
-.customSelect__option--is-selected {
-  background: #f5e7d6;
-  color: #a67c52;
-}
-
-.customSelect__menu {
-  z-index: 10;
-}
-
-.customSelect__single-value {
-  color: #a67c52;
-  font-size: 16px;
-}
-
-.customSelect__placeholder {
-  color: #a67c52;
-  font-size: 16px;
-}
-
 @media (max-width: $breakpoint-tablet) {
   .products {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -709,29 +674,29 @@
     }
   }
 
-  // .categories {
-  //    flex-grow: 1;
-  //    width: auto;
-  //    select {
-  //      width: 100%;
-  //      box-sizing: border-box;
-  //      padding: 8px 12px;
-  //      border: 1px solid rgba($primary-color, 0.4);
-  //      border-radius: $border-radius;
-  //      font-size: 0.95rem;
-  //      color: $text-primary;
-  //      appearance: none;
-  //      background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7.293 7.293a1 1 0 011.414 0L10 8.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z"/></svg>');
-  //      background-repeat: no-repeat;
-  //      background-position: right 0.5em center;
-  //      background-size: 1.5em;
-  //      min-width: 0;
-  //      &:focus {
-  //        border-color: $primary-color;
-  //        outline: none;
-  //      }
-  //    }
-  // }
+  .categories {
+     flex-grow: 1;
+     width: auto;
+     select {
+       width: 100%;
+       box-sizing: border-box;
+       padding: 8px 12px;
+       border: 1px solid rgba($primary-color, 0.4);
+       border-radius: $border-radius;
+       font-size: 0.95rem;
+       color: $text-primary;
+       appearance: none;
+       background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7.293 7.293a1 1 0 011.414 0L10 8.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z"/></svg>');
+       background-repeat: no-repeat;
+       background-position: right 0.5em center;
+       background-size: 1.5em;
+       min-width: 0;
+       &:focus {
+         border-color: $primary-color;
+         outline: none;
+       }
+     }
+  }
 
   .priceRange {
     width: 100%;
