@@ -47,7 +47,7 @@ app.use(session({
   }
 }));
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session()); //работа с сессиями, чтобы пользователь оставался залогиненым между запросами
 
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
