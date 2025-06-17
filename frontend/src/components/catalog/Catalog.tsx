@@ -162,7 +162,7 @@ const Catalog: React.FC = () => {
             styles={{
               control: (base, state) => ({
                 ...base,
-                border: '2px solid #a65c00',
+                border: state.isFocused ? '2px solid #a65c00' : '2px solid #e0c9a6',
                 borderRadius: '8px',
                 minHeight: '46px',
                 fontSize: '18px',
@@ -171,7 +171,7 @@ const Catalog: React.FC = () => {
                 boxShadow: 'none',
                 transition: 'border-color 0.2s, box-shadow 0.2s',
                 outline: 'none',
-                ...(state.isFocused ? { borderColor: '#a65c00', boxShadow: '0 2px 8px rgba(166,92,0,0.15)' } : {}),
+                ...(state.isFocused ? { boxShadow: '0 2px 8px rgba(166,92,0,0.15)' } : {}),
               }),
               option: (base, state) => ({
                 ...base,
