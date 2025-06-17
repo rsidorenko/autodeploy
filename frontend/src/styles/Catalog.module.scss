@@ -327,21 +327,20 @@
   outline: none !important;
 }
 :global(.customSelect__value-container) {
-  padding: 10px 16px !important;
-  margin: 0 !important;
-  height: 100% !important;
   display: flex !important;
   align-items: center !important;
+  height: 100% !important;
+  padding: 10px 16px !important;
   box-sizing: border-box !important;
 }
 :global(.customSelect__single-value),
 :global(.customSelect__placeholder) {
-  color: #a67c52 !important;
-  font-size: 1.05rem !important;
-  line-height: 1.2 !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+  line-height: 1 !important;
   margin: 0 !important;
   padding: 0 !important;
-  font-family: inherit !important;
 }
 :global(.customSelect__indicator-separator) {
   background-color: #e0c9a6 !important;
