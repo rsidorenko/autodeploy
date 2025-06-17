@@ -305,7 +305,7 @@
 }
 
 :global(.customSelect__control) {
-  border: 2px solid #a65c00 !important;
+  border: 2px solid #e0c9a6 !important;
   border-radius: 8px !important;
   min-height: 44px !important;
   height: 44px !important;
@@ -327,11 +327,12 @@
   outline: none !important;
 }
 :global(.customSelect__value-container) {
-  padding: 0 !important;
+  padding: 10px 16px !important;
   margin: 0 !important;
   height: 100% !important;
   display: flex !important;
   align-items: center !important;
+  box-sizing: border-box !important;
 }
 :global(.customSelect__single-value),
 :global(.customSelect__placeholder) {
