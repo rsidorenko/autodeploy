@@ -6,7 +6,7 @@ dotenv.config();
 const transporter = nodemailer.createTransport({
   host: 'smtp.yandex.ru',
   port: 465,
-  secure: true, // true for 465, false for other ports
+  secure: true, // true для 465, false для остальных портов
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD
