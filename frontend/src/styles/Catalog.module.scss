@@ -300,28 +300,36 @@
   padding: $spacing-unit * 2 0;
 }
 
-// .categorySelect {
-//   padding: $spacing-unit * 0.75;
-//   padding-right: 2.5em;
-//   border: 2px solid rgba($primary-brown, 0.2);
-//   border-radius: $border-radius;
-//   font-size: 1rem;
-//   min-width: 180px;
-//   font-family: $font-primary;
-//   transition: border-color 0.3s;
-//   background: $white;
-//   color: $primary-blue;
-//   margin-right: $spacing-unit;
-//   appearance: none;
-//   /*background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7.293 7.293a1 1 0 011.414 0L10 8.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z"/></svg>');*/
-//   background-repeat: no-repeat;
-//   background-position: right 0.5em center;
-//   background-size: 2em;
-//   &:focus {
-//     border-color: $primary-brown;
-//     outline: none;
-//   }
-// }
+.categorySelect {
+  padding: 8px 12px;
+  border: 2px solid rgba($primary-brown, 0.2);
+  border-radius: $border-radius;
+  font-size: 1rem;
+  min-width: 180px;
+  font-family: $font-primary;
+  transition: border-color 0.3s;
+  background: $white;
+  color: $primary-blue;
+  margin-right: $spacing-unit;
+  appearance: none;
+  box-sizing: border-box;
+  height: 46px;
+  &.customSelect__control {
+    border: 2px solid rgba($primary-brown, 0.2);
+    border-radius: $border-radius;
+    min-height: 46px;
+    font-size: 1rem;
+    background: $white;
+    color: $primary-blue;
+    box-shadow: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    &:focus, &--is-focused {
+      border-color: $primary-brown;
+      box-shadow: 0 2px 8px rgba($primary-brown, 0.15);
+    }
+  }
+}
 
 @media (max-width: $breakpoint-tablet) {
   .products {
@@ -674,28 +682,35 @@
     }
   }
 
-  .categories {
-     flex-grow: 1;
-     width: auto;
-     select {
-       width: 100%;
-       box-sizing: border-box;
-       padding: 8px 12px;
-       border: 1px solid rgba($primary-color, 0.4);
-       border-radius: $border-radius;
-       font-size: 0.95rem;
-       color: $text-primary;
-       appearance: none;
-       background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7.293 7.293a1 1 0 011.414 0L10 8.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z"/></svg>');
-       background-repeat: no-repeat;
-       background-position: right 0.5em center;
-       background-size: 1.5em;
-       min-width: 0;
-       &:focus {
-         border-color: $primary-color;
-         outline: none;
-       }
-     }
+  .categorySelect,
+  .categorySelect.customSelect__control {
+    padding: 8px 12px;
+    border: 1px solid rgba($primary-color, 0.4);
+    border-radius: $border-radius;
+    font-size: 0.95rem;
+    min-width: 0;
+    height: 40px;
+    min-height: 40px;
+    box-sizing: border-box;
+    margin-right: 0;
+    background: $white;
+    color: $primary-blue;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    &.customSelect__control {
+      border: 1px solid rgba($primary-color, 0.4);
+      border-radius: $border-radius;
+      min-height: 40px;
+      font-size: 0.95rem;
+      background: $white;
+      color: $primary-blue;
+      box-shadow: none;
+      outline: none;
+      &:focus, &--is-focused {
+        border-color: $primary-color;
+        box-shadow: 0 2px 8px rgba($primary-color, 0.15);
+      }
+    }
   }
 
   .priceRange {

@@ -163,14 +163,6 @@ const Catalog: React.FC = () => {
             styles={{
               control: (base, state) => ({
                 ...base,
-                border: state.isFocused
-                  ? (isMobile ? '1px solid #a65c00' : '2px solid #a65c00')
-                  : (isMobile ? '1px solid rgba(166, 92, 0, 0.4)' : '2px solid #e0c9a6'),
-                borderRadius: '8px',
-                minHeight: isMobile ? '40px' : '46px',
-                height: isMobile ? '40px' : '46px',
-                fontSize: isMobile ? '0.95rem' : '18px',
-                padding: isMobile ? '0 12px' : undefined,
                 background: '#fff',
                 color: '#a67c52',
                 boxShadow: 'none',
@@ -178,9 +170,6 @@ const Catalog: React.FC = () => {
                 transition: 'border-color 0.2s, box-shadow 0.2s',
                 ...(state.isFocused ? { boxShadow: '0 2px 8px rgba(166,92,0,0.15)' } : {}),
                 '&:hover': {
-                  border: state.isFocused
-                    ? (isMobile ? '1px solid #a65c00' : '2px solid #a65c00')
-                    : (isMobile ? '1px solid rgba(166, 92, 0, 0.4)' : '2px solid #e0c9a6'),
                   boxShadow: 'none',
                 },
               }),
