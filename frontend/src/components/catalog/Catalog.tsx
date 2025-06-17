@@ -162,8 +162,7 @@ const Catalog: React.FC = () => {
               styles={{
                 control: (base) => ({
                   ...base,
-                  borderColor: 'rgba($primary-color, 0.4)',
-                  // border: '2px solid rgba($primary-brown, 0.4)',
+                  borderColor: 'rgba(166, 78, 0, 0.41)',
                   boxShadow: 'none',
                   minHeight: '46px',
                   fontSize: '16px',
