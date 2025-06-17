@@ -304,21 +304,22 @@
   margin-right: $spacing-unit;
 }
 
-.customSelect__control {
-  border: 2px solid rgba($primary-brown, 0.4);
+:global(.customSelect__control) {
+  border: 2px solid rgba(166, 78, 0, 0.4);
   border-radius: 8px;
   min-height: 42px;
   font-size: 1.05rem;
   background: #fff;
-  color: $primary-blue;
+  color: #015D65;
   box-shadow: 0 1px 4px rgba(100, 100, 255, 0.04);
   outline: none;
   padding: 10px 16px;
   transition: border-color 0.2s, box-shadow 0.2s;
-  &:focus, &--is-focused {
-    border-color: $primary-brown;
-    box-shadow: 0 2px 8px rgba($primary-brown, 0.15);
-  }
+}
+:global(.customSelect__control:focus),
+:global(.customSelect__control--is-focused) {
+  border-color: #a64e00;
+  box-shadow: 0 2px 8px rgba(166, 78, 0, 0.15);
 }
 
 @media (max-width: $breakpoint-tablet) {
@@ -675,15 +676,16 @@
   .categorySelect {
     margin-right: 0;
   }
-  .customSelect__control {
-    border: 1px solid rgba($primary-color, 0.4);
+  :global(.customSelect__control) {
+    border: 1px solid rgba(1, 93, 101, 0.4);
     min-height: 40px;
     font-size: 0.95rem;
     padding: 0 12px;
-    &:focus, &--is-focused {
-      border-color: $primary-color;
-      box-shadow: 0 2px 8px rgba($primary-color, 0.15);
-    }
+  }
+  :global(.customSelect__control:focus),
+  :global(.customSelect__control--is-focused) {
+    border-color: #015D65;
+    box-shadow: 0 2px 8px rgba(1, 93, 101, 0.15);
   }
 
   .priceRange {
