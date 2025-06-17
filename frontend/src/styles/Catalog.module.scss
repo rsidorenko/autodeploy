@@ -902,3 +902,39 @@
     // ... existing code ...
   }
 }
+
+// --- Стили для react-select категорий ---
+.customSelect__control {
+  border-color: #e0c9a6 !important;
+  box-shadow: none !important;
+  min-height: 46px !important;
+  font-size: 16px !important;
+  background: #fff !important;
+  border-radius: 8px !important;
+}
+
+.customSelect__option {
+  background: #fff;
+  color: #a67c52;
+  cursor: pointer;
+  font-size: 16px;
+}
+.customSelect__option--is-focused,
+.customSelect__option--is-selected {
+  background: #f5e7d6;
+  color: #a67c52;
+}
+
+.customSelect__menu {
+  z-index: 10;
+}
+
+.customSelect__single-value {
+  color: #a67c52;
+  font-size: 16px;
+}
+
+.customSelect__placeholder {
+  color: #a67c52;
+  font-size: 16px;
+}
