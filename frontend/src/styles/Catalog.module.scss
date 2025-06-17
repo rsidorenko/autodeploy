@@ -338,13 +338,14 @@
 :global(.customSelect__placeholder) {
   display: flex !important;
   align-items: center !important;
-  height: 24px !important;
-  line-height: 24px !important;
+  height: 100% !important;
   font-size: 1.05rem !important;
   color: #a67c52 !important;
   margin: 0 !important;
   padding: 0 !important;
   font-family: inherit !important;
+  vertical-align: middle !important;
+  padding-top: 2px !important;
 }
 :global(.customSelect__indicator-separator) {
   background-color: #e0c9a6 !important;
