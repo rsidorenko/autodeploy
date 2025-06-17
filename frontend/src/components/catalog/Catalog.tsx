@@ -146,47 +146,60 @@ const Catalog: React.FC = () => {
           </div>
 
           <div className={styles.categories} style={{ border: 'none', boxShadow: 'none', padding: 0, background: 'none' }}>
-            <Select
-              className={styles.categorySelect}
-              classNamePrefix="customSelect"
-              options={[{ value: 'все', label: 'Все' }, ...categories.map(cat => ({ value: cat, label: cat.charAt(0).toUpperCase() + cat.slice(1) }))]}
-              value={{ value: category, label: category === 'все' ? 'Все' : category.charAt(0).toUpperCase() + category.slice(1) }}
-              onChange={option => {
-                setCategory(option?.value || 'все');
-                setCurrentPage(1);
-              }}
-              placeholder="Выберите или введите категорию..."
-              isClearable={false}
-              noOptionsMessage={() => 'Отсутствует'}
-              isSearchable
-              styles={{
-                control: (base) => ({
-                  ...base,
-                  borderColor: 'rgba(166, 78, 0, 0.41)',
-                  boxShadow: 'none',
-                  minHeight: '46px',
-                  fontSize: '16px',
-                  background: '#fff',
-                }),
-                option: (base, state) => ({
-                  ...base,
-                  background: state.isSelected ? '#f5e7d6' : state.isFocused ? '#f5e7d6' : '#fff',
-                  color: '#a67c52',
-                  cursor: 'pointer',
-                }),
-                menu: (base) => ({
-                  ...base,
-                  zIndex: 10,
-                }),
-                singleValue: (base) => ({
-                  ...base,
-                  color: '#a67c52',
-                }),
-                placeholder: (base) => ({
-                  ...base,
-                  color: '#a67c52',
-                }),
-              }}
+          <Select
+            className={styles.categorySelect}
+            classNamePrefix="customSelect"
+            options={[{ value: 'все', label: 'Все' }, ...categories.map(cat => ({ value: cat, label: cat.charAt(0).toUpperCase() + cat.slice(1) }))]}
+            value={{ value: category, label: category === 'все' ? 'Все' : category.charAt(0).toUpperCase() + category.slice(1) }}
+            onChange={option => {
+              setCategory(option?.value || 'все');
+              setCurrentPage(1);
+            }}
+            placeholder="Выберите или введите категорию..."
+            isClearable={false}
+            noOptionsMessage={() => 'Отсутствует'}
+            isSearchable
+            styles={{
+              control: (base, state) => ({
+                ...base,
+                border: '2px solid #a65c00',
+                borderRadius: '8px',
+                minHeight: '46px',
+                fontSize: '18px',
+                background: '#fff',
+                color: '#a67c52',
+                boxShadow: 'none',
+                transition: 'border-color 0.2s, box-shadow 0.2s',
+                outline: 'none',
+                ...(state.isFocused ? { borderColor: '#a65c00', boxShadow: '0 2px 8px rgba(166,92,0,0.15)' } : {}),
+              }),
+              option: (base, state) => ({
+                ...base,
+                background: state.isSelected ? '#f5e7d6' : state.isFocused ? '#f5e7d6' : '#fff',
+                color: '#a67c52',
+                cursor: 'pointer',
+              }),
+              singleValue: (base) => ({
+                ...base,
+                color: '#a67c52',
+              }),
+              placeholder: (base) => ({
+                ...base,
+                color: '#a67c52',
+              }),
+              menu: (base) => ({
+                ...base,
+                zIndex: 10,
+              }),
+              dropdownIndicator: (base) => ({
+                ...base,
+                color: '#a65c00',
+              }),
+              indicatorSeparator: (base) => ({
+                ...base,
+                backgroundColor: '#e0c9a6',
+              }),
+            }}
             />
           </div>
         </div>
