@@ -305,16 +305,16 @@
 }
 
 .customSelect__control {
-  border: 2px solid rgba($primary-brown, 0.2);
-  border-radius: $border-radius;
-  min-height: 46px;
-  font-size: 1rem;
-  background: $white;
+  border: 2px solid rgba($primary-brown, 0.4);
+  border-radius: 8px;
+  min-height: 42px;
+  font-size: 1.05rem;
+  background: #fff;
   color: $primary-blue;
-  box-shadow: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(100, 100, 255, 0.04);
   outline: none;
-  padding: 0 16px;
+  padding: 10px 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
   &:focus, &--is-focused {
     border-color: $primary-brown;
     box-shadow: 0 2px 8px rgba($primary-brown, 0.15);
