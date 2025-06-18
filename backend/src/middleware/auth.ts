@@ -29,19 +29,19 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
         const decoded = jwt.verify(token, process.env.JWT_SECRET || 'swagozavr2swag1') as JwtPayload;
         const user = await User.findById(decoded.id);
         if (!user) {
-          return res.status(401).json({ message: 'User not found.' });
+          return res.status(401).json({ message: 'Пользователь не найден' });
         }
         req.user = user;
         return next();
       } catch (error) {
-        return res.status(401).json({ message: 'Invalid token.' });
+        return res.status(401).json({ message: 'Неверный токен или истек срок жизни' });
       }
     }
 
     // Если ничего не подошло — не авторизован
-    return res.status(401).json({ message: 'Please authenticate.' });
+    return res.status(401).json({ message: 'Пожалуйста, авторизуйтесь' });
   } catch (error) {
-    console.error('Auth middleware error:', error);
+    console.error('Auth middleware ошибка:', error);
     return res.status(500).json({ message: 'педик' });
   }
 };
@@ -49,10 +49,10 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
 export const adminAuth = async (req: Request, res: Response, next: NextFunction) => {
   try {
     if (!req.user) {
-      return res.status(401).json({ message: 'Not authenticated.' });
+      return res.status(401).json({ message: 'Не авторизован' });
     }
     if (req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Not authorized.' });
+      return res.status(403).json({ message: 'Не авторизован' });
     }
     next();
   } catch (error) {

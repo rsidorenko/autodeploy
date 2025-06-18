@@ -28,7 +28,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
   }
 };
 
-// Get user by ID
+// Получение пользователя по ID
 export const getUserById = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.params.id).select('-password');
@@ -41,7 +41,7 @@ export const getUserById = async (req: Request, res: Response) => {
   }
 };
 
-// Update user
+// Обновление пользователя
 export const updateUser = async (req: Request, res: Response) => {
   try {
     const { name, email } = req.body;
@@ -91,7 +91,7 @@ export const updateUserRole = async (req: Request, res: Response) => {
   }
 };
 
-// Delete user (admin only)
+// Удаление пользователя(админ)
 export const deleteUser = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.params.id);

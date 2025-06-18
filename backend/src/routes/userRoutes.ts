@@ -356,7 +356,7 @@ router.patch('/update-name', auth, async (req, res) => {
   }
 });
 
-// Change password
+// Смена пароля
 router.patch('/change-password', auth, async (req, res) => {
   try {
     const { currentPassword, newPassword } = req.body;
