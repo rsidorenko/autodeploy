@@ -31,7 +31,7 @@ app.use(cors({
   exposedHeaders: ['Set-Cookie']
 }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); // поддерживает вложенные объекты и массивы
 app.use(xss());
 app.use(cookieParser());
 
@@ -53,7 +53,7 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 const metricsMiddleware = promBundle({
   includeMethod: true,
-  includePath: true,
+  includePath: true, // путь запроса метрики
   promClient: {
     collectDefaultMetrics: {}
   }
@@ -75,4 +75,4 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   res.status(statusCode).json({ message: err.message || 'Что-то пошло не так!' });
 });
 
-export default app; 
+export default app;
