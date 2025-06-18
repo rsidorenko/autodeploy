@@ -709,7 +709,7 @@ const AdminPanel: React.FC = () => {
                   <td>
                     <input
                       type="number"
-                      min={1}
+                      min={0}
                       className={ordersStyles.input}
                       style={{ width: 60 }}
                       value={stockInputs[product._id] || ''}
