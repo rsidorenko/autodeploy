@@ -305,13 +305,13 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
   res.clearCookie('token', {
     httpOnly: true,
-    secure: false, // временно для localhost
+    secure: true,
     sameSite: 'lax',
     path: '/',
   });
   res.clearCookie('connect.sid', {
     httpOnly: true,
-    secure: false, // временно для localhost
+    secure: true,
     sameSite: 'lax',
     path: '/',
   });
