@@ -552,21 +552,6 @@ router.patch('/:id/cancel', auth, async (req, res) => {
 // Обновление статуса заказа (admin)
 router.patch('/:id', auth, adminAuth, updateOrderStatus);
 
-// ADMIN: Add new product
-router.post('/products', auth, adminAuth, async (req, res) => {
-  try {
-    const { name, description, price, image, category, stock } = req.body;
-    if (!name || !description || !price || !image || !category || stock == null) {
-      return res.status(400).json({ message: 'Все поля обязательны' });
-    }
-    const product = new Product({ name, description, price, image, category, stock });
-    await product.save();
-    res.status(201).json(product);
-  } catch (error) {
-    res.status(400).json({ message: 'Ошибка при добавлении товара' });
-  }
-});
-
 // Delete order (admin only)
 router.delete('/:id', auth, adminAuth, deleteOrder);
 
