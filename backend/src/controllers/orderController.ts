@@ -156,15 +156,15 @@ export const updateOrderStatus = async (req: Request, res: Response) => {
       return res.status(404).json({ message: 'Order not found' });
     }
 
-    // Validate status
+    // Валидные статусы
     if (!['unconfirmed', 'assembling', 'ready', 'assembled', 'issued', 'cancelled'].includes(status)) {
       return res.status(400).json({ 
-        message: 'Invalid status. Must be one of: unconfirmed, assembling, ready, assembled, issued, cancelled' 
+        message: 'Неверный статус. Должен быть одним из: unconfirmed, assembling, ready, assembled, issued, cancelled' 
       });
     }
 
     order.status = status;
-    // Set readyAt when status changes to 'ready'
+    // Установить readyAt, когда статус изменится на «готово»
     if (status === 'ready') {
       order.readyAt = new Date();
     }

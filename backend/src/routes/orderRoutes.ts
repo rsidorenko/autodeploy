@@ -366,7 +366,7 @@ router.get('/my-orders', auth, async (req, res) => {
   }
 });
 
-// Create new order
+// Создать новый заказ
 router.post('/', auth, createOrder);
 
 // ADMIN: Get all orders, максимально подробная диагностика
@@ -496,7 +496,7 @@ router.get('/search-last4', auth, adminAuth, async (req, res) => {
   }
 });
 
-// ADMIN: Get order details by id (без фильтрации по user)
+// ADMIN: Get заказы по айди (без фильтрации по user)
 router.get('/admin/:id', auth, adminAuth, async (req, res) => {
   try {
     const order = await Order.findById(req.params.id)
@@ -511,7 +511,7 @@ router.get('/admin/:id', auth, adminAuth, async (req, res) => {
   }
 });
 
-// Get order details
+// Get детали заказа
 router.get('/:id', getOrderById);
 
 // Cancel order
@@ -532,14 +532,14 @@ router.patch('/:id/cancel', auth, async (req, res) => {
       });
     }
 
-    // Restore product stock
+    // восстановить количество товара
     for (const item of order.items) {
       await Product.findByIdAndUpdate(item.product, {
         $inc: { stock: item.quantity }
       });
     }
 
-    // Change order status to 'cancelled' instead of deleting the order
+    // Измените статус заказа на «отменен» вместо его удаления.
     order.status = 'cancelled';
     await order.save();
     
