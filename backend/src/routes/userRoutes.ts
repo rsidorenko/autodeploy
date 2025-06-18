@@ -363,7 +363,7 @@ router.patch('/change-password', auth, async (req, res) => {
     const user = await User.findById(req.user._id);
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: 'Отсутствует пользователь' });
     }
 
     if (!(await user.comparePassword(currentPassword))) {
@@ -377,9 +377,9 @@ router.patch('/change-password', auth, async (req, res) => {
     // Обновляем пароль напрямую в базе
     await User.findByIdAndUpdate(user._id, { password: hashedPassword });
     
-    res.json({ message: 'Password updated successfully' });
+    res.json({ message: 'Пароль успешно изменен' });
   } catch (error) {
-    res.status(400).json({ message: 'Error changing password' });
+    res.status(400).json({ message: 'Ошибка смены пароля' });
   }
 });
 
