@@ -262,7 +262,7 @@ router.post('/register', async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, {
-      expiresIn: '7d'
+      expiresIn: '1h'
     });
 
     res.status(201).json({ user, token });
