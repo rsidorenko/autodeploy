@@ -549,7 +549,7 @@ router.patch('/:id/cancel', auth, async (req, res) => {
   }
 });
 
-// Update order status (admin only)
+// Обновление статуса заказа (admin)
 router.patch('/:id', auth, adminAuth, updateOrderStatus);
 
 // ADMIN: Add new product
