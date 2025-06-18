@@ -625,7 +625,7 @@ const AdminPanel: React.FC = () => {
             )}
 
             <label className={ordersStyles.label} htmlFor="stock">Количество</label>
-            <input id="stock" name="stock" type="number" placeholder="Количество" value={form.stock} onChange={handleChange} required className={ordersStyles.input} min={1} />
+            <input id="stock" name="stock" type="number" placeholder="Количество" value={form.stock} onChange={handleChange} required className={ordersStyles.input} min={0} />
 
             <label className={ordersStyles.label} htmlFor="image">Изображение:</label>
             <input
@@ -709,7 +709,7 @@ const AdminPanel: React.FC = () => {
                   <td>
                     <input
                       type="number"
-                      min={0}
+                      min={1}
                       className={ordersStyles.input}
                       style={{ width: 60 }}
                       value={stockInputs[product._id] || ''}
