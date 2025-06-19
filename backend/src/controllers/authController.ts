@@ -235,7 +235,7 @@ export const verifyResetCode = async (req: Request, res: Response) => {
   }
 };
 
-// Get current user
+// Get текущего пользователя
 export const getCurrentUser = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.user._id).select('-password');
