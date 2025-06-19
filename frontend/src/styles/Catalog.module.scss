@@ -777,15 +777,64 @@
     margin-right: 0;
   }
   :global(.customSelect__control) {
-    border: 1px solid rgba(1, 93, 101, 0.4);
-    min-height: 40px;
-    font-size: 0.95rem;
-    padding: 0 12px;
+    border: 2px solid #e0c9a6 !important;
+    border-radius: 8px !important;
+    min-height: 44px !important;
+    height: 44px !important;
+    background: #fff !important;
+    box-shadow: 0 1px 4px rgba(100, 100, 255, 0.04) !important;
+    outline: none !important;
+    padding: 0 !important;
+    font-size: 1.05rem !important;
+    color: #a67c52 !important;
+    font-family: $font-primary !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
+    display: flex !important;
+    align-items: center !important;
   }
-  :global(.customSelect__control:focus),
-  :global(.customSelect__control--is-focused) {
-    border-color: #015D65;
-    box-shadow: 0 2px 8px rgba(1, 93, 101, 0.15);
+  :global(.customSelect__value-container) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    padding: 0 12px !important;
+    box-sizing: border-box !important;
+    gap: 0 !important;
+  }
+  :global(.customSelect__single-value),
+  :global(.customSelect__placeholder) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    height: 100% !important;
+    font-size: 1.05rem !important;
+    color: #a67c52 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: $font-primary !important;
+    vertical-align: middle !important;
+    line-height: 44px !important;
+    box-sizing: border-box !important;
+  }
+  :global(.customSelect__indicator-separator) {
+    background-color: #e0c9a6 !important;
+    width: 1px !important;
+    height: 24px !important;
+    align-self: center !important;
+    margin: 0 8px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  :global(.customSelect__dropdown-indicator) {
+    color: #a65c00 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    margin-right: 8px !important;
   }
 
   .priceRange {
@@ -990,48 +1039,5 @@
 
   .empty {
     // ... existing code ...
-  }
-
-  :global(.customSelect__value-container) {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    height: 44px !important;
-    min-height: 44px !important;
-    padding: 0 12px !important;
-    box-sizing: border-box !important;
-    gap: 0 !important;
-  }
-  :global(.customSelect__single-value),
-  :global(.customSelect__placeholder) {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    height: 100% !important;
-    font-size: 1.05rem !important;
-    color: #a67c52 !important;
-    margin: 0 !important;
-    padding: -10px !important;
-    font-family: $font-primary !important;
-    vertical-align: middle !important;
-    line-height: 44px !important;
-  }
-  :global(.customSelect__indicator-separator) {
-    background-color: #e0c9a6 !important;
-    width: 1px !important;
-    height: 24px !important;
-    align-self: center !important;
-    margin: 0 8px !important;
-    padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-  }
-  :global(.customSelect__dropdown-indicator) {
-    color: #a65c00 !important;
-    padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    height: 100% !important;
-    margin-right: 8px !important;
   }
 }
