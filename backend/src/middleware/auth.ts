@@ -42,7 +42,7 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
     return res.status(401).json({ message: 'Пожалуйста, авторизуйтесь' });
   } catch (error) {
     console.error('Auth middleware ошибка:', error);
-    return res.status(500).json({ message: 'педик' });
+    return res.status(500).json({ message: 'Ошибка авторизации' });
   }
 };
 
